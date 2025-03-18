@@ -68,6 +68,11 @@ body {
     font-family: arial;
 }
 
+#button:hover {
+    background-color: #383838;
+    animation: button 5s;
+}
+
 #Menu input:hover {
     border: 3px #5a5a5a solid;
     color: #5a5a5a;
@@ -103,5 +108,11 @@ footer {
         font-size: 20px;
         font-weight: bold;
         font-family: arial;
+    }
+}
+
+@keyframes button {
+    to {
+        background-color: black;
     }
 }
