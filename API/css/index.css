@@ -1,0 +1,107 @@
+body {
+    background-color: #610994;
+    display: grid;
+    height: 100vh;
+    justify-items: center;
+    align-items: center;
+    grid-template-rows: auto 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+#SITE {
+    display: grid;
+    justify-items: center;
+    color: white;
+}
+
+#Menu {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    border-radius: 5px;
+    background-color: white;
+    height: 130px;
+    width: 300px;
+    grid-template-rows: auto auto;
+    row-gap: 7px;
+    justify-items: center;
+    padding: 12px;
+}
+
+#Menu input {
+    display: grid;
+    text-align: center;
+    grid-row: 1;
+    font-family: arial;
+    background-color: white;
+    border: gray 3px solid;
+    border-radius: 5px;
+    color: #a0a0a0;
+    font-size: 17px;
+    justify-items: center;
+    align-items: center;
+    height: 50px;
+    width: 260px;
+    font-weight: 600;
+}
+
+#Menu input::placeholder {
+    position: absolute;
+    left: 55px;
+}
+
+#button {
+    display: grid;
+    grid-row: 2;
+    border-radius: 5px;
+    background-color: black;
+    font-size: 15px;
+    color: white;
+    height: 50px;
+    width: 270px;
+    align-items: center;
+    justify-items: center;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: arial;
+}
+
+#Menu input:hover {
+    border: 3px #5a5a5a solid;
+    color: #5a5a5a;
+}
+
+footer {
+    color: white;
+    display: grid;
+    grid-row: 2;
+    justify-items: center;
+    font-size: 10px;
+    letter-spacing: 0.2rem;
+}
+
+@media (max-width: 700px) {
+    #Menu {
+        background: none;
+    }
+
+    #Menu input {
+        border: 0px;
+        border-radius: 0px;
+
+    }
+
+    #Menu input:hover {
+        border: 1px solid #b8b8b8;
+    }
+
+    #button {
+        border-radius: 0px;
+        color: #ffffff;
+        font-size: 20px;
+        font-weight: bold;
+        font-family: arial;
+    }
+}
