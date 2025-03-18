@@ -1,0 +1,41 @@
+body {
+    background-color: #610994;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+#Menu {
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: white;
+    height: 150px;
+    width: auto;
+    grid-template-rows: auto auto;
+    row-gap: 7px;
+    padding: 12px;
+}
+
+#Menu input {
+    display: grid;
+    grid-row: 1;
+    background-color: white;
+    border: gray 3px solid;
+    border-radius: 10px;
+    color: gray;
+    font-size: 15px;
+    justify-items: center;
+    align-items: center;
+}
+
+#button {
+    display: grid;
+    grid-row: 2;
+    background-color: black;
+    font-size: 15px;
+    color: white;
+    align-items: center;
+    justify-items: center;
+}
