@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animação de Água</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .water {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background-color: #fa3134;
+            animation: fillWater 5s ease-in-out forwards, changeToGreen 5s 5s ease-out forwards;
+        }
+
+        @keyframes fillWater {
+            from {
+                height: 0;
+            }
+            to {
+                height: 100%;
+            }
+        }
+
+        @keyframes changeToGreen {
+            from {
+                background-color: #fa3134;
+                height: 100%;
+            }
+            to {
+                background-color: #34fa31;
+                height: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="water"></div>
+</body>
+</html>
