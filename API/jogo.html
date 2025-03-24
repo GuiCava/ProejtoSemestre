@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo de Adivinhação das Bandeiras</title>
+  <link rel="stylesheet" href="../API/css/jogo.css">
+</head>
+<body>
+  <header>
+
+    <h1>Jogo de Adivinhação das Bandeiras</h1>
+    <button onclick="startGame()" id="reinicio">Reiniciar Pontuação</button>
+
+  </header>
+
+  <main>
+
+    <div id="containerBandeira">
+      <img id="flag" src="" alt="Bandeira" />
+    </div>
+    
+    <div class="containerPontuacao">
+      <p id="score"> 0 </p>
+    </div>
+
+    <div class="correct-flags-container" id="BandeirasCertas">
+      <!-- As bandeiras acertadas aparecerão aqui -->
+    </div>
+
+  </main>
+
+  <footer>
+    <button class="option" id="red" onclick="checkAnswer(this)"></button>
+    <button class="option" id="blue" onclick="checkAnswer(this)"></button>
+    <button class="option" id="yellow" onclick="checkAnswer(this)"></button>
+    <button class="option" id="green" onclick="checkAnswer(this)"></button>
+  </footer>
+
+  <script src="../API/javaScript/script.js"></script>
+</body>
+</html>
