@@ -4,24 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jogo de Adivinhação das Bandeiras</title>
-  <link rel="stylesheet" href="../API/css/jogo.css">
+  <link rel="stylesheet" href="css/jogo.css">
 </head>
 <body>
   <header>
-
-    <h1>Jogo de Adivinhação das Bandeiras</h1>
-    <button onclick="startGame()" id="reinicio">Reiniciar Pontuação</button>
-
+    <img src="img/LogoJogo.svg" id="LogoJogo">
   </header>
 
   <main>
 
-    <div id="containerBandeira">
-      <img id="flag" src="" alt="Bandeira" />
-    </div>
+    <img id="flag" src="" alt="Bandeira" />
+
     
-    <div class="containerPontuacao">
-      <p id="score"> 0 </p>
+    <p id="score"> 0 </p>
+
+    <div id="BOTOES">
+      <button class="option" class="optionEsquerda" id="Black" onclick="checkAnswer(this)"></button>
+      <button class="option" class="optionDireita" id="Red" onclick="checkAnswer(this)"></button>
+      <button class="option" class="optionEsquerda" id="Red" onclick="checkAnswer(this)"></button>
+      <button class="option" class="optionDireita" id="Black" onclick="checkAnswer(this)"></button>
     </div>
 
     <div class="correct-flags-container" id="BandeirasCertas">
@@ -31,12 +32,9 @@
   </main>
 
   <footer>
-    <button class="option" id="red" onclick="checkAnswer(this)"></button>
-    <button class="option" id="blue" onclick="checkAnswer(this)"></button>
-    <button class="option" id="yellow" onclick="checkAnswer(this)"></button>
-    <button class="option" id="green" onclick="checkAnswer(this)"></button>
+    <div id="opacity"></div>
   </footer>
 
-  <script src="../API/javaScript/script.js"></script>
+  <script src="javaScript/script.js"></script>
 </body>
 </html>
