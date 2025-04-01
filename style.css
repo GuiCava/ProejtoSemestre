@@ -25,7 +25,6 @@ footer{
     
 }
 
-
 #JPEG{
     width: 347px;
 }
@@ -53,11 +52,13 @@ footer{
     cursor: pointer;
     border-radius: 7px;
     height: 55px;
+    transition: background-color 0.3s ease, transform 0.8 ease;
 
 }
 
 #botao:hover { /*transição de cor do butão da seta*/
-    background-color: #811414;
+    background-color: #e9f546;
+    transition: sacle(1.1);
 }
 #input{
     padding: 10px;
@@ -66,7 +67,8 @@ footer{
     border: none;
     outline: none;
     padding-left: 20px;
-    font-style: Arial;
+    font-style: Arial, sans-serif;
+  
 }
 
 #input::placeholder{
@@ -74,6 +76,7 @@ footer{
    font-size: 23px;
    font-weight: bold;
    font-family: arial;
+
 }
 
 #menu-contato{ /*id da section rodapé*/
@@ -151,10 +154,19 @@ nav ul li a:hover {
     color: white;
 }
 
+#icones a i{
+    color: #ffffff;
+    transition: transform 0.3s ease, color 0.8s ease;
+}
+
+#icones a :hover{
+    transform: scale(1.2);
+    color: #707070;
+}
+
 #termos{
     display: grid;
     grid-column: 3;
-
 }
 
 #termos a button{
@@ -162,4 +174,9 @@ nav ul li a:hover {
     color: #707070;
     text-decoration: none;
     border: none;
+    transition: color 0.3s ease;
+}
+
+#termos a button:hover{
+    color: white
 }
