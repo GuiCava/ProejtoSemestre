@@ -1,10 +1,10 @@
 body {
-    background-color: #610994;
+    background-color: #000000;
     display: grid;
     height: 100vh;
     justify-items: center;
     align-items: center;
-    grid-template-rows: auto 2rem;
+    grid-template-rows: auto 6rem;
     margin: 0;
     padding: 0;
 }
@@ -15,52 +15,65 @@ body {
     color: white;
 }
 
+#Logo {
+    display: grid;
+    grid-column: span 2;
+    width: 317px;
+}
+
+
 #Menu {
     display: grid;
-    align-content: center;
-    justify-content: center;
-    border-radius: 5px;
-    background-color: white;
-    height: 130px;
-    width: 300px;
+    grid-template-columns: auto auto;
     grid-template-rows: auto auto;
-    row-gap: 7px;
+    border-radius: 5px;
+    background: none;
+    height: auto;
+    width: auto;
     justify-items: center;
-    padding: 12px;
+    column-gap: 25px;
 }
 
 #Menu input {
     display: grid;
     text-align: center;
-    grid-row: 1;
+    grid-column: 1;
+    grid-row: 2;
     font-family: arial;
     background-color: white;
-    border: gray 3px solid;
-    border-radius: 5px;
-    color: #a0a0a0;
+    border-radius: 10px;
+    color: #000000;
     font-size: 17px;
     justify-items: center;
     align-items: center;
     height: 50px;
     width: 260px;
-    font-weight: 600;
+    font-weight: bold;
+    border: none;
 }
 
 #Menu input::placeholder {
     position: absolute;
-    left: 55px;
+    left: 35px;
+    top: 13px;
+    font-size: 27px;
 }
 
 #button {
     display: grid;
+    grid-column: 2;
     grid-row: 2;
-    border-radius: 5px;
-    background-color: black;
+    border-radius: 10px;
+    background-color: #ffffff;
     font-size: 15px;
     color: white;
-    height: 50px;
-    width: 270px;
+    height: auto;
+    width: auto;
     align-items: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
     justify-items: center;
     text-decoration: none;
     font-size: 20px;
@@ -68,51 +81,81 @@ body {
     font-family: arial;
 }
 
-#button:hover {
-    background-color: #383838;
-    animation: button 5s;
+#columnOne {
+    display: grid;
+    grid-column: 1;
 }
 
-#Menu input:hover {
-    border: 3px #5a5a5a solid;
-    color: #5a5a5a;
+#Links {
+    display: grid;
+    grid-column: 2;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+#columnThree {
+    display: grid;
+    grid-column: 3;
+}
+
+.text {
+    text-decoration: none;
+    color: #707070;
+    font-weight: bold;
+    font-family: arial;
+    font-size: 11px;
+}
+
+#termo:hover {
+    color: white;
+    animation: 2s;
 }
 
 footer {
     color: white;
     display: grid;
     grid-row: 2;
+    width: 100%;
+    height: 100%;
+    align-items: center;
     justify-items: center;
     font-size: 10px;
-    letter-spacing: 0.2rem;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
-@media (max-width: 510px) {
+.redirecional:hover {
+    filter: drop-shadow(1px 1px 1px #bebebe);
+}
+
+#COLUNAUM {
+    display: grid;
+    grid-column: 1;
+    justify-self: start;
+    padding-left: 70px;
+}
+
+#COLUNADOIS {
+    display: grid;
+    grid-column: 3;
+    justify-self: end;
+    padding-right: 70px;
+}
+
+@media (max-width: 700px) {
     #Menu {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
         background: none;
+        column-gap: 5px;
+        row-gap: 5px;
     }
 
-    #Menu input {
-        border: 0px;
-        border-radius: 0px;
-
-    }
-
-    #Menu input:hover {
-        border: 1px solid #b8b8b8;
+    #Logo {
+        grid-column: 1;
+        grid-row: 1;
     }
 
     #button {
-        border-radius: 0px;
-        color: #ffffff;
-        font-size: 20px;
-        font-weight: bold;
-        font-family: arial;
-    }
-}
-
-@keyframes button {
-    to {
-        background-color: black;
+        grid-row: 3;
+        grid-column: 1;
     }
 }
