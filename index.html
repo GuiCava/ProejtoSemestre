@@ -1,52 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo de Adivinhação das Bandeiras</title>
+  <link rel="stylesheet" href="css/jogo.css">
 </head>
 <body>
-    <main>
-            <div class="logo-img">
-                <img src="img/logo1.svg" alt="quizzy" id="JPEG">
-            </div>
-        
-            <div class="caixa-login">
-                <input id="input" type="text" placeholder="Insira o seu ID...">
-                <button id="botao"> <img src="img/seta.svg" alt=""></button>
-            </div>
-    </main>
+  <header>
+    <img src="img/LogoJogo.svg" id="LogoJogo">
+    <p id="score"> 0 </p>
+  </header>
 
-    <footer>
-        <nav>
-            <ul id="menu-contato">
-    
-                <li id="direitos">
-                    <i></i> 
-                    <a><button>© 2025 Quizzy. Todos os direitos reservados.</button></a>
-                </li>
-                
-                <li id="icones">
-                    <a href="https://instagram.com/sophialaurent.makeup" class="icone">
-                        <i class="fab fa-instagram fa-2x"></i> </a>   
-                
-                    <a href="https://twitter.com" class="icone">
-                    <i class="fa-brands fa-twitter fa-2x"></i> </a>
-                
-                    <a href="https://facebook.com" target="_blank" class="icone">
-                    <i class="fa-brands fa-square-facebook fa-2x"></i></a>
-                </li>
-    
-                <li id="termos">
-                    <i class="lab la-file-contract"class="link"></i> 
-                    <a href="#" target="_blank"><button>Termos de Uso</button></a>
-                </li>
-                
-            </ul>
-        </nav>
-    </footer>
+  <main>
 
+    <img id="flag" src="" alt="Bandeira" />
+
+    <div id="BOTOES">
+      <button class="option" class="optionEsquerda" id="Black" onclick="checkAnswer(this)"></button>
+      <button class="option" class="optionDireita" id="Red" onclick="checkAnswer(this)"></button>
+      <button class="option" class="optionEsquerda" id="Red" onclick="checkAnswer(this)"></button>
+      <button class="option" class="optionDireita" id="Black" onclick="checkAnswer(this)"></button>
+    </div>
+
+    <div class="correct-flags-container" id="BandeirasCertas">
+      <!-- As bandeiras acertadas aparecerão aqui -->
+    </div>
+
+  </main>
+
+  <footer>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#FF002F" fill-opacity="1" d="M0,64L48,64C96,64,192,64,288,101.3C384,139,480,213,576,229.3C672,245,768,203,864,197.3C960,192,1056,224,1152,218.7C1248,213,1344,171,1392,149.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+  </footer>
+
+  <script src="javaScript/script.js"></script>
 </body>
 </html>
