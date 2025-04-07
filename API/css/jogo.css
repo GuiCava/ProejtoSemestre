@@ -1,9 +1,11 @@
 * {
     padding: 0;
     margin: 0;
+    
 }
 
 body {
+    overflow: hidden;
     display: grid;
     height: 100vh;
     grid-template-rows: 140px auto 220px;
@@ -14,11 +16,24 @@ header {
     grid-row: 1;
     background: linear-gradient(150deg, #FF002F, #79041A);
     align-items: center;
-    padding-left: 30px
+    padding-left: 30px;
+    grid-template-columns: auto auto;
+    padding-right: 200px;
 }
 
 #LogoJogo {
+    display: grid;
+    grid-column: 1;
     width: 120px;
+}
+
+#score {
+    display: grid;
+    grid-column: 2;
+    justify-self: end;
+    font-weight: bold;
+    color: white;
+    font-size: 25px;
 }
 
 main {
@@ -26,6 +41,7 @@ main {
     grid-row: 2;
     grid-template-columns: 1fr 2.25fr 1fr;
     grid-template-rows: 1fr 1fr;
+    
 }
 
 #BOTOES {
@@ -62,7 +78,9 @@ main {
     border-radius: 8px;
 }
 
-
+#BandeirasCertas {
+    display: none;
+}
 
 #Black {
     background-color: black;
@@ -79,4 +97,41 @@ main {
 footer {
     display: grid;
     grid-row: 3;
+    align-items: center;
+    justify-items: center;
+}
+
+
+@media (max-width: 885px) {
+    body {
+        grid-template-rows: 120px 1fr 0.25fr;
+        width: 100vw;
+        height: 105vh;
+    }
+    #flag {
+        width: 287px;
+        height: 165px;
+    }
+
+    header {
+        padding-right: 0;
+    }
+
+    #score {
+        display: grid;
+        justify-self: center;
+    }
+
+    main {
+        padding-top: 30px;
+        grid-template-rows: 1fr 1fr;
+        grid-row: 2;
+    }
+
+    #BOTOES {
+        grid-column: span 3;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+
 }
