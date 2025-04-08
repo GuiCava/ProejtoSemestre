@@ -8,7 +8,7 @@ body {
     overflow: hidden;
     display: grid;
     height: 100vh;
-    grid-template-rows: 140px auto 220px;
+    grid-template-rows: 140px auto 40px 220px;
 }
 
 header {
@@ -25,6 +25,10 @@ header {
     display: grid;
     grid-column: 1;
     width: 120px;
+}
+
+.z-index {
+    z-index: 2;
 }
 
 #score {
@@ -75,7 +79,7 @@ main {
     grid-row: 1;
     align-self: center;
     justify-self: center;
-    border-radius: 8px;
+    border-radius: 10px;
 }
 
 #BandeirasCertas {
@@ -96,11 +100,14 @@ main {
 
 footer {
     display: grid;
-    grid-row: 3;
+    grid-row: 4;
     align-items: end;
     justify-items: center;
 }
 
+svg:not(:root) {
+    z-index: 1;
+}
 
 @media (max-width: 885px) {
     body {
