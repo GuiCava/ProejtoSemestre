@@ -11,6 +11,10 @@ body {
     overflow: hidden;
 }
 
+#wp-extension {
+    display: none
+}
+
 header {
     display: grid;
     grid-row: 1;
