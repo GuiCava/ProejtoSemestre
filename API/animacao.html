@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animação de Água</title>
+</head>
+<body>
+    
+    <div class="Errou"></div>
+    <div class="Acertou"></div>
+
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .Errou {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background-color: #fa3134;
+            animation: ir 1s ease-in-out forwards, voltar 2s 3s ease-out forwards
+        }
+
+        .Acertou {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background-color: #3eaa00de;
+            animation: ir 1s ease-in-out forwards, voltar 2s 3s ease-out forwards
+        }
+
+        @keyframes ir {
+            from {
+                height: 0;
+            }
+            to {
+                height: 100%;
+            }
+        }
+
+        @keyframes voltar {
+            from {
+                height: 100%;
+            }
+            to {
+                height: 0;
+            }
+        }
+    </style>
+</body>
+</html>
