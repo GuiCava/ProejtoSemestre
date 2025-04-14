@@ -11,6 +11,44 @@ body {
     overflow: hidden;
 }
 
+.Loading {
+    display: grid;
+    grid-row: span 3;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    background-color: white;
+    border: none;
+    align-items: center;
+    justify-items: center;
+}
+
+/*LOADING*/
+.custom-loader {
+    width: 220px;
+    height: 32px;
+    border-radius: 20px;
+    color: #b10020;
+    border: 2px solid;
+    position: relative;
+}
+  
+.custom-loader::before {
+    content: "";
+    position: absolute;
+    margin: 2px;
+    inset: 0 100% 0 0;
+    border-radius: inherit;
+    background: #c40024;
+    animation: p6 1s infinite;
+}
+  
+@keyframes p6 {
+    100% {
+      inset: 0
+    }
+}
+
 header {
     display: grid;
     grid-row: 1;

@@ -5,33 +5,46 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jogo de Adivinhação das Bandeiras</title>
   <link rel="stylesheet" href="css/jogo.css">
-</head>
-<body>
 
-  <!-- Div que faz a animação se o usuário acertou ou errou a resposta
+  <script>
+    function apagar() {
+      setTimeout(() => {
+        const loading = document.querySelector(".Loading");
+        if (loading) {
+          loading.remove();
+        }
+      }, 1000);
+    }
+  </script>
+  
+</head>
+<body onload="apagar()">
+
+    <!-- Div que faz a animação se o usuário acertou ou errou a resposta
   <div class="Errou"></div>
   <div class="Acertou"></div> 
   -->
 
+  <dialog class="Loading" open>
+    <div class="custom-loader"></div>
+  </button>
+  
+  </dialog>
+
   <header>
     <img src="img/LogoJogo.svg" id="LogoJogo">
-    <p id="score"> 0 </p>
+    <p id="score">0</p>
   </header>
 
   <main>
-
     <img id="flag" src="" alt="Bandeira" />
-
     <div id="BOTOES" class="z-index">
-      <button class="option" class="optionEsquerda" id="Black" onclick="checkAnswer(this)"></button>
-      <button class="option" class="optionDireita" id="Red" onclick="checkAnswer(this)"></button>
-      <button class="option" class="optionEsquerda" id="Red" onclick="checkAnswer(this)"></button>
-      <button class="option" class="optionDireita" id="Black" onclick="checkAnswer(this)"></button>
+      <button class="option optionEsquerda" id="Black" onclick="checkAnswer(this)"></button>
+      <button class="option optionDireita" id="Red" onclick="checkAnswer(this)"></button>
+      <button class="option optionEsquerda" id="Red" onclick="checkAnswer(this)"></button>
+      <button class="option optionDireita" id="Black" onclick="checkAnswer(this)"></button>
     </div>
-
-    <div class="correct-flags-container" id="BandeirasCertas">
-    </div>
-
+    <div class="correct-flags-container" id="BandeirasCertas"></div>
   </main>
 
   <footer>
