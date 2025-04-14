@@ -8,6 +8,22 @@ document.addEventListener("DOMContentLoaded", () => {
   startGame();
 });
 
+function Acertou() {
+  var novaDiv = document.createElement("div");
+  novaDiv.className = "Acertou";
+  
+  document.body.appendChild(novaDiv);
+
+}
+
+function Errou() {
+  var novaDiv = document.createElement("div");
+  novaDiv.className = "Errou";
+  
+  document.body.appendChild(novaDiv);
+
+}
+
 // Função para iniciar o jogo
 function startGame() {
   score = 0;
@@ -88,7 +104,7 @@ function checkAnswer(button) {
   if (selectedAnswer === currentCountry.name.common) {
     score++;
     correctFlags.push(currentCountry); // Adiciona a bandeira acertada à lista
-    alert("Resposta Correta!");
+    Acertou();
 
     // Exibe a bandeira na parte inferior esquerda
     const flagImage = document.createElement("img");
@@ -96,7 +112,7 @@ function checkAnswer(button) {
     flagImage.classList.add("correct-flag");
   } else {
     score--; // Perde 1 ponto se errar
-    alert(`Resposta Errada! A resposta correta era: ${currentCountry.name.common}`);
+    Errou();;
 
     // Se errou, remove a última bandeira que foi acertada
     if (correctFlags.length > 0) {
