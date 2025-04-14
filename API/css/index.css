@@ -1,5 +1,5 @@
 body {
-    background-color: #000000;
+    background-image: url("../img/FundoIndex.svg");
     display: grid;
     height: 100vh;
     justify-items: center;
@@ -7,10 +7,6 @@ body {
     grid-template-rows: auto 6rem;
     margin: 0;
     padding: 0;
-}
-
-#wp-extension {
-    display: none
 }
 
 #SITE {
