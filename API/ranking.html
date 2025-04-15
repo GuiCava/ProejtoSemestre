@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo de Adivinhação das Bandeiras</title>
+  <link rel="stylesheet" href="css/ranking.css">
+
+  <script>
+    function apagar() {
+      setTimeout(() => {
+        const loading = document.querySelector(".Loading");
+        if (loading) {
+          loading.remove();
+        }
+      }, 1000);
+    }
+  </script>
+  
+</head>
+<body onload="apagar()">
+
+    <dialog class="Loading" open>
+        <div class="custom-loader"></div>
+    </dialog>
+
+    <header>
+      <img src="img/LogoMain.svg">
+      <button>Next</button>
+    </header>
+
+    <main>
+      <div class="podio">
+        <div class="name"></div>
+        <div class="quadro"></div>
+      </div>
+
+      <div class="podio">
+        <div class="name"></div>
+        <div class="quadro"></div>
+      </div>
+
+      <div class="podio">
+        <div class="name"></div>
+        <div class="quadro"></div>
+      </div>
+    </main>
+    
+</body>
+</html>
