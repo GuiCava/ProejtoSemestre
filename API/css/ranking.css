@@ -162,7 +162,7 @@ main {
     align-items: center;
     font-weight: bolder;
     font-family: arial;
-    animation: aparecer 6s forwards;
+    animation: aparecer 7.5s forwards;
 }
 
 .acertos {
@@ -176,7 +176,7 @@ main {
     justify-items: center;
     align-items: start;
     font-family: arial;
-    animation: aparecer 6s forwards;
+    animation: aparecer 7.5s forwards;
 }
 
 @media (max-width: 800px) {
