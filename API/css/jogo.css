@@ -11,6 +11,10 @@ body {
     overflow: hidden;
 }
 
+#wp-extension {
+    display:none; 
+}
+
 .Loading {
     display: grid;
     grid-row: span 3;
