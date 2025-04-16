@@ -43,27 +43,6 @@ header button {
 header button:hover {
     background-color: #c20000;
 }
-
-footer button {
-    display: grid;
-    width: 95px;
-    height: 30px;
-    justify-items: center;
-    align-items: center;
-    background-color: #FE0000;
-    border: none;
-    color: white;
-    font-weight: bold;
-    font-size: 23px;
-    cursor: pointer;
-    align-self: center;
-    justify-self: center;
-}
-
-footer button:hover {
-    background-color: #c20000;
-}
-
 header img {
     width: 105px;
     margin-left: 100px;
@@ -195,10 +174,6 @@ main {
     justify-items: center;
     align-items: start;
     font-family: arial;
-}
-
-footer {
-    display: none;
 }
 
 @media (max-width: 800px) {
