@@ -1,8 +1,3 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
 body {
     background-image: url("../img/FundoIndex.svg");
     display: grid;
@@ -10,11 +5,12 @@ body {
     justify-items: center;
     align-items: center;
     grid-template-rows: auto 6rem;
+    margin: 0;
+    padding: 0;
 }
 
-form {
-    display: grid;
-    grid-column: span 2;
+#wp-extension {
+    display:none; 
 }
 
 #SITE {
@@ -32,8 +28,6 @@ form {
 
 #Menu {
     display: grid;
-    grid-column: span 2;
-    grid-row: 1;
     grid-template-columns: auto auto;
     grid-template-rows: auto auto;
     border-radius: 5px;
@@ -143,15 +137,15 @@ footer {
     padding-left: 70px;
 }
 
+.X {
+    margin-left: 4px;
+}
+
 #COLUNADOIS {
     display: grid;
     grid-column: 3;
     justify-self: end;
     padding-right: 70px;
-}
-
-.X {
-    margin-left: 4px;
 }
 
 @media (max-width: 700px) {
