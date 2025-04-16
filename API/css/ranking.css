@@ -257,15 +257,15 @@ main {
 
 .name1 {
     opacity: 0;
-    animation: aparecer 5s forwards;
+    animation: aparecer 6.5s forwards;
 }
 
 .name2 {
     opacity: 0;
-    animation: aparecer 3s forwards;
+    animation: aparecer 4.5s forwards;
 }
 
 .name3 {
     opacity: 0;
-    animation: aparecer 1s forwards;
+    animation: aparecer 2.5s forwards;
 }
