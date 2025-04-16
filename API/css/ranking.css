@@ -12,7 +12,7 @@ body {
 }
 
 #wp-extension {
-    display:none; 
+    display: none;
 }
 
 header {
@@ -254,6 +254,6 @@ footer {
     }
 
     header button {
-        display: none;
+        margin-right: 30px;
     }
 }
