@@ -9,6 +9,10 @@ body {
     padding: 0;
 }
 
+#wp-extension {
+    display:none; 
+}
+
 #SITE {
     display: grid;
     justify-items: center;
