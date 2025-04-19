@@ -7,12 +7,8 @@
 body {
     display: grid;
     height: 100vh;
-    grid-template-rows: 120px auto 220px;
+    grid-template-rows: 100px auto 220px;
     overflow: hidden;
-}
-
-#wp-extension {
-    display:none; 
 }
 
 .Loading {
@@ -66,7 +62,7 @@ header {
 #LogoJogo {
     display: grid;
     grid-column: 1;
-    width: 120px;
+    width: 100px;
 }
 
 .z-index {
@@ -95,7 +91,7 @@ main {
     display: grid;
     grid-column: 2;
     grid-row: 2;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 0.90fr 0.90fr;
     grid-template-rows: 1fr 1fr;
     gap: 10px;
     padding: 10px;
@@ -103,7 +99,6 @@ main {
 
 .option {
     display: grid;
-    cursor: pointer;
     align-items: center;
     justify-items: center;
     width: 1fr;
@@ -117,8 +112,8 @@ main {
 
 #flag {
     display: grid;
-    width: 347px;
-    height: 225px;
+    width: 327px;
+    height: 205px;
     grid-column: 2;
     grid-row: 1;
     align-self: center;
@@ -182,6 +177,10 @@ footer img {
         grid-column: span 3;
         grid-template-columns: 1fr 1fr;
         grid-template-rows: 1fr 1fr;
+    }
+
+    footer {
+        margin-bottom: 0;
     }
 
 }
