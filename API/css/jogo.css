@@ -92,13 +92,14 @@ main {
     grid-column: 2;
     grid-row: 2;
     grid-template-columns: 0.90fr 0.90fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: 0.90fr 0.90fr;
     gap: 10px;
     padding: 10px;
 }
 
 .option {
     display: grid;
+    cursor: pointer;
     align-items: center;
     justify-items: center;
     width: 1fr;
@@ -175,8 +176,8 @@ footer img {
 
     #BOTOES {
         grid-column: span 3;
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 0.90fr 0.90fr;
+        grid-template-rows: 0.90fr 0.90fr;
     }
 
     footer {
