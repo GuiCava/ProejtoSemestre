@@ -40,7 +40,7 @@ body {
     inset: 0 100% 0 0;
     border-radius: inherit;
     background: #c40024;
-    animation: p6 1s infinite;
+    animation: p6 2s infinite;
 }
   
 @keyframes p6 {
