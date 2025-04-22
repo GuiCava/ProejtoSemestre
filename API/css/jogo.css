@@ -7,9 +7,8 @@
 body {
     display: grid;
     height: 100vh;
-    grid-template-rows: 100px auto 220px;
+    grid-template-rows: 149px auto 200px;
     overflow: hidden;
-    background-size: cover;
 }
 
 .Loading {
@@ -63,7 +62,7 @@ header {
 #LogoJogo {
     display: grid;
     grid-column: 1;
-    width: 100px;
+    width: 138px;
 }
 
 .z-index {
@@ -84,7 +83,7 @@ main {
     grid-row: 2;
     grid-template-columns: 1fr 2.25fr 1fr;
     grid-template-rows: 1fr 1fr;
-    padding-top: 20px;
+    padding-top: 10px;
     
 }
 
@@ -106,7 +105,7 @@ main {
     width: 1fr;
     height: 1fr;
     color: white;
-    font-size: 25px;
+    font-size: 30px;
     font-weight: bold;
     border: none;
     border-radius: 5px;
@@ -114,13 +113,13 @@ main {
 
 #flag {
     display: grid;
-    width: 327px;
-    height: 205px;
+    width: 347px;
+    height: 225px;
     grid-column: 2;
     grid-row: 1;
     align-self: center;
     justify-self: center;
-    border-radius: 10px;
+    border-radius: 20px;
 }
 
 #BandeirasCertas {
@@ -143,11 +142,10 @@ footer {
     display: grid;
     grid-row: 3;
     align-items: end;
-    justify-items: center;
-}
-
-footer img {
-    width: 100%;
+    margin-left: 100px;
+    justify-items: start;
+    font-size: 20px;
+    margin-bottom: 30px;
 }
 
 @media (max-width: 885px) {
@@ -184,6 +182,11 @@ footer img {
     footer {
         margin-bottom: 0;
     }
+
+    #LogoJogo {
+        width: 100px;
+    }
+
 
 }
 
