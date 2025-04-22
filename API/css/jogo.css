@@ -9,6 +9,7 @@ body {
     height: 100vh;
     grid-template-rows: 100px auto 220px;
     overflow: hidden;
+    background-size: cover;
 }
 
 .Loading {
