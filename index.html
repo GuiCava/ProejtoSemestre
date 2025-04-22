@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cronômetro de 15 Minutos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 100px;
+            background-color: #f4f4f9;
+        }
+
+        #timer {
+            font-size: 60px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        #startButton, #stopButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            margin: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        #startButton:hover, #stopButton:hover {
+            background-color: #45a049;
+        }
+
+        #stopButton {
+            background-color: #f44336;
+        }
+
+        #stopButton:hover {
+            background-color: #e41f1f;
+        }
+    </style>
+</head>
+<body>
+    <h1>Cronômetro de 15 Minutos</h1>
+    <div id="timer">15:00</div>
+    <div class="container">
+        <button id="startButton">Iniciar</button>
+        <button id="stopButton" disabled>Parar</button>
+    </div>
+
+    <script>
+        let timer;
+        let minutes = 15;
+        let seconds = 0;
+        let isRunning = false;
+
+        const timerDisplay = document.getElementById('timer');
+        const startButton = document.getElementById('startButton');
+        const stopButton = document.getElementById('stopButton');
+
+        function updateTimerDisplay() {
+            const minutesStr = minutes < 10 ? `0${minutes}` : minutes;
+            const secondsStr = seconds < 10 ? `0${seconds}` : seconds;
+            timerDisplay.textContent = `${minutesStr}:${secondsStr}`;
+        }
+
+        function startTimer() {
+            if (!isRunning) {
+                isRunning = true;
+                startButton.disabled = true;
+                stopButton.disabled = false;
+
+                timer = setInterval(function() {
+                    if (seconds === 0) {
+                        if (minutes === 0) {
+                            clearInterval(timer);
+                            alert("Tempo esgotado!");
+                            resetTimer();
+                        } else {
+                            minutes--;
+                            seconds = 59;
+                        }
+                    } else {
+                        seconds--;
+                    }
+                    updateTimerDisplay();
+                }, 1000);
+            }
+        }
+
+        function stopTimer() {
+            clearInterval(timer);
+            isRunning = false;
+            startButton.disabled = false;
+            stopButton.disabled = true;
+        }
+
+        function resetTimer() {
+            minutes = 15;
+            seconds = 0;
+            updateTimerDisplay();
+            isRunning = false;
+            startButton.disabled = false;
+            stopButton.disabled = true;
+        }
+
+        startButton.addEventListener('click', startTimer);
+        stopButton.addEventListener('click', stopTimer);
+    </script>
+</body>
+</html>
