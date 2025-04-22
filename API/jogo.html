@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="css/jogo.css">
   <link rel="shortcut icon" href="img/LogoJogo.svg" type="x-icon">
 
-
   <script>
     function apagar() {
       setTimeout(() => {
@@ -15,22 +14,15 @@
         if (loading) {
           loading.remove();
         }
-      }, 1000);
+      }, 2000);
     }
   </script>
   
 </head>
 <body onload="apagar()">
 
-    <!-- Div que faz a animação se o usuário acertou ou errou a resposta
-  <div class="Errou"></div>
-  <div class="Acertou"></div> 
-  -->
-
   <dialog class="Loading" open>
     <div class="custom-loader"></div>
-  </button>
-  
   </dialog>
 
   <header>
@@ -50,7 +42,7 @@
   </main>
 
   <footer>
-    <img src="img/footer.svg">
+    <p>© 2025 Quizzy</p>
   </footer>
 
   <script src="javaScript/script.js"></script>
