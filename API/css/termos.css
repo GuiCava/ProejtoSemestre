@@ -136,3 +136,7 @@ footer button {
 footer p {
     width: 400px;
 }
+
+footer button:hover {
+    border: white solid 2px;
+}
