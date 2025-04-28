@@ -6,6 +6,7 @@
 body {
     background-image: url("../img/rankingFundo.svg");
     display: grid;
+    background-size: cover;
     height: 100vh;
     grid-template-rows: 1fr 3fr 6rem;
     grid-template-columns: 1.8fr 5fr 1.8fr;
@@ -130,6 +131,10 @@ main {
     display: grid;
     grid-row: 1;
     margin-bottom: 20px;
+}
+
+.TWITER {
+    width: 29px;
 }
 
 .podio img {
