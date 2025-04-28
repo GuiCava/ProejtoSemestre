@@ -16,18 +16,57 @@
         }
       }, 2000);
     }
+
+    // Função para iniciar o cronômetro
+    let timer;
+    let minutes = 5; // 5 minutos
+    let seconds = 2;
+
+    function updateTimerDisplay() {
+      const minutesStr = minutes < 10 ? `0${minutes}` : minutes;
+      const secondsStr = seconds < 10 ? `0${seconds}` : seconds;
+      document.getElementById("timer").textContent = `${minutesStr}:${secondsStr}`;
+    }
+
+    function startTimer() {
+      timer = setInterval(function() {
+        if (seconds === 0) {
+          if (minutes === 0) {
+            clearInterval(timer);
+            alert("Tempo esgotado!");
+            // Ações quando o tempo acabar, se necessário.
+          } else {
+            minutes--;
+            seconds = 59;
+          }
+        } else {
+          seconds--;
+        }
+        updateTimerDisplay();
+      }, 1000);
+    }
+
+    window.onload = () => {
+      apagar();
+      startTimer(); // Inicia o cronômetro assim que a página carrega
+    };
   </script>
-  
+
 </head>
-<body onload="apagar()">
+<body>
 
   <dialog class="Loading" open>
     <div class="custom-loader"></div>
   </dialog>
 
   <header>
-    <img src="img/LogoJogo.svg" id="LogoJogo">
     <p id="score">0</p>
+    <div id="name" class="nome">
+      <img src="img/player-icon.svg">
+      <p class="player">@nickname</p>
+    </div>
+    <div id="timer">05:00</div>
+    <img src="img/LogoJogo.svg" id="LogoJogo">
   </header>
 
   <main>
