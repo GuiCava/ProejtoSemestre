@@ -11,17 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
 function Acertou() {
   var novaDiv = document.createElement("div");
   novaDiv.className = "Acertou";
-  
   document.body.appendChild(novaDiv);
-
 }
 
 function Errou() {
   var novaDiv = document.createElement("div");
   novaDiv.className = "Errou";
-  
   document.body.appendChild(novaDiv);
-
 }
 
 // Função para iniciar o jogo
@@ -55,6 +51,9 @@ function nextQuestion() {
 
   currentCountry = countries[randomIndex];
 
+  // Obter o nome do país em português
+  const countryNameInPortuguese = currentCountry.translations.por.common || currentCountry.name.common;
+
   // Exibir a bandeira
   document.getElementById("flag").src = currentCountry.flags.svg;
 
@@ -62,7 +61,7 @@ function nextQuestion() {
   displayedFlags.push(currentCountry.name.common);
 
   // Gerar opções
-  const options = generateOptions(currentCountry.name.common);
+  const options = generateOptions(countryNameInPortuguese);
 
   // Embaralhar as opções antes de exibir
   const shuffledOptions = shuffleArray(options);
@@ -82,7 +81,8 @@ function generateOptions(correctAnswer) {
   // Adicionar opções incorretas aleatórias
   while (options.size < 4) {
     const randomIndex = Math.floor(Math.random() * countries.length);
-    options.add(countries[randomIndex].name.common);
+    const countryNameInPortuguese = countries[randomIndex].translations.por.common || countries[randomIndex].name.common;
+    options.add(countryNameInPortuguese);
   }
 
   return Array.from(options);
@@ -101,7 +101,10 @@ function shuffleArray(array) {
 function checkAnswer(button) {
   const selectedAnswer = button.textContent;
 
-  if (selectedAnswer === currentCountry.name.common) {
+  // Obter o nome do país em português para comparação
+  const countryNameInPortuguese = currentCountry.translations.por.common || currentCountry.name.common;
+
+  if (selectedAnswer === countryNameInPortuguese) {
     score++;
     correctFlags.push(currentCountry); // Adiciona a bandeira acertada à lista
     Acertou();
@@ -112,7 +115,7 @@ function checkAnswer(button) {
     flagImage.classList.add("correct-flag");
   } else {
     score--; // Perde 1 ponto se errar
-    Errou();;
+    Errou();
 
     // Se errou, remove a última bandeira que foi acertada
     if (correctFlags.length > 0) {
