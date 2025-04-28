@@ -6,6 +6,7 @@ body {
     align-items: center;
     margin: 0;
     padding: 0px;
+    background-size: cover;
 }
 
 #wp-extension {
@@ -51,17 +52,16 @@ form {
     font-size: 27px;
     justify-items: center;
     align-items: center;
-    height: 70px;
-    width: 280px;
+    height: 52px;
+    width: 264px;
     font-weight: bold;
     border: none;
 }
 
 #Menu input::placeholder {
     position: absolute;
-    left: 15px;
-    top: 20px;
-    font-size: 30px;
+    left: 20px;
+    font-size: 27px;
 }
 
 #button {
@@ -73,7 +73,7 @@ form {
     font-size: 15px;
     color: white;
     height: auto;
-    width: 60px;
+    width: 40px;
     align-items: center;
     padding-top: 5px;
     padding-bottom: 5px;
