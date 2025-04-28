@@ -64,6 +64,7 @@ header {
     grid-row: 1;
     width: 138px;
     margin-left: 90px;
+    filter: drop-shadow(0 0 0.40rem black);
 }
 
 #timer {
@@ -120,6 +121,7 @@ main {
     font-weight: bold;
     border: none;
     border-radius: 5px;
+    filter: drop-shadow(0 0 0.10rem black);
 }
 
 #name {
@@ -155,6 +157,7 @@ main {
     align-self: center;
     justify-self: center;
     border-radius: 20px;
+    filter: drop-shadow(0 0 0.40rem black);
 }
 
 #BandeirasCertas {
