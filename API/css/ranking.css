@@ -324,3 +324,7 @@ footer {
     opacity: 0;
     animation: aparecer 2.5s forwards;
 }
+
+.redirecional:hover {
+    transform: scale(1.2);
+}
