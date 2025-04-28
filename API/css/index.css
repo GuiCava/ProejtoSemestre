@@ -14,6 +14,10 @@ body {
     display:none; 
 }
 
+.TWITER {
+    width: 29px;
+}
+
 #SITE {
     display: grid;
     justify-items: center;
