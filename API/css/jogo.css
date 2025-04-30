@@ -4,10 +4,14 @@
     
 }
 
+#wp-extension {
+    display: none;
+}
+
 body {
     display: grid;
     height: 100vh;
-    grid-template-rows: 139px auto 200px;
+    grid-template-rows: 0.40fr 1fr 0.25fr;
 }
 
 .Loading {
@@ -20,6 +24,10 @@ body {
     border: none;
     align-items: center;
     justify-items: center;
+}
+
+footer p {
+    display: grid;
 }
 
 /*LOADING*/
@@ -56,6 +64,7 @@ header {
     justify-items: center;
     grid-template-columns: 1fr 1fr 1fr;
     padding-right: 90px;
+    height: 100%;
 }
 
 #LogoJogo {
@@ -182,7 +191,6 @@ footer {
     margin-left: 100px;
     justify-items: start;
     font-size: 20px;
-    margin-bottom: 30px;
 }
 
 @media (max-width: 885px) {
