@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sala de Espera</title>
+    <link rel="stylesheet" href="css/espera.css">
+    <link rel="shortcut icon" href="img/LogoMain.svg" type="x-icon">
+</head>
+
+<body>
+    <header>
+        <div id="espera">Espere no lobby</div>
+        <div id="caixa">
+            <div id="text">PIN DO JOGO</div>
+            <div class="pin">PINDE8NUM</div>
+        </div>
+    </header>
+
+    <main>
+        <div id="main">
+            <div class="formato black">
+                <img src="img/Flux_Dev_A_set_of_custom_playing_card_icons_in_a_modern_minima_3-Photoroom 1.svg">
+                <p class="name name1"></p>
+
+            </div>
+            <div class="formato red"> <img
+                    src="img/Flux_Dev_A_set_of_custom_playing_card_icons_in_a_modern_minima_3-Photoroom 10.svg"
+                    class="img2">
+                <p class="name name2">@bila_boy</p>
+            </div>
+            <div class="formato white"><img src="img/zxcvgbh.svg">
+                <p class="name name3">@cava_gui</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <img src="img/ampulheta.svg">
+        <p>Aguardando o host iniciar o jogo...</p>
+    </footer>
+
+    <script>
+        const nome2 = localStorage.getItem("nomeUsuario");
+    
+        // Atualiza os elementos com o nome e sala
+        document.getElementsByClassName("name1")[0].innerText = nome2;
+        document.getElementsByClassName("pin")[0].innerText = localStorage.getItem("nomeSala");
+
+        // Verifica se o usuário já foi adicionado para essa sala
+        const sala = localStorage.getItem("nomeSala");
+        const usuarioAdicionadoKey = `usuarioAdicionado_${sala}`;
+
+        if (!localStorage.getItem(usuarioAdicionadoKey)) {
+            adicionarUsuario(nome2);
+            localStorage.setItem(usuarioAdicionadoKey, "true");
+        }
+
+        setTimeout(function () {
+            window.location.href = "jogo.html";
+        }, 60000); // 60 segundos
+
+        function adicionarUsuario(nomeUsuario) {
+            fetch(`http://localhost:5000/sala/${sala}/novo_usuario`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ nome: nomeUsuario , "ponto": 0})
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log('Resposta da API:', data);  
+                    alert(data.mensagem || 'Usuário adicionado com sucesso!');
+                })
+                .catch(err => {
+                    console.error('Erro ao adicionar usuário:', err);
+                    alert('Erro ao conectar com o servidor.');
+                });
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo de Adivinhação das Bandeiras</title>
+  <link rel="stylesheet" href="css/jogo.css">
+  <link rel="shortcut icon" href="img/LogoJogo.svg" type="x-icon">
+
+  <script>
+    function atualizarPontosNoServidor() {
+      const nome_usuario = localStorage.getItem("nomeUsuario");
+      const nome_sala = localStorage.getItem("nomeSala");
+      const pontos = localStorage.getItem("pontos")
+      return fetch(`http://localhost:5000/sala/${nome_sala}/usuario/${nome_usuario}/pontos`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ pontos: localStorage.getItem("pontosUsuario") }) // envia os pontos salvos
+      });
+    }
+  
+    function apagar() {
+      setTimeout(() => {
+        const loading = document.querySelector(".Loading");
+        if (loading) {
+          loading.remove();
+        }
+      }, 2000);
+    }
+  
+    let timer;
+    let minutes = 0;
+    let seconds = 10;
+  
+    function updateTimerDisplay() {
+      const minutesStr = minutes < 10 ? `0${minutes}` : minutes;
+      const secondsStr = seconds < 10 ? `0${seconds}` : seconds;
+      document.getElementById("timer").textContent = `${minutesStr}:${secondsStr}`;
+    }
+  
+    function startTimer() {
+      timer = setInterval(async function() {
+        if (seconds === 0) {
+          if (minutes === 0) {
+            clearInterval(timer);
+            alert("Tempo esgotado!");
+  
+            // Enviar pontos antes de redirecionar
+            await atualizarPontosNoServidor();
+  
+            // Redireciona após garantir envio
+            window.location.href = 'ranking.html';
+          } else {
+            minutes--;
+            seconds = 59;
+          }
+        } else {
+          seconds--;
+        }
+        updateTimerDisplay();
+      }, 1000);
+    }
+  
+    window.onload = () => {
+      apagar();
+      startTimer();
+    };
+  </script>
+  
+
+</head>
+<body>
+
+  <dialog class="Loading" open>
+    <div class="custom-loader"></div>
+  </dialog>
+
+  <header>
+    <p id="score">0</p>
+    <div id="name" class="nome">
+      <img src="img/player-icon.svg">
+      <p class="player">@nickname</p>
+    </div>
+    <div id="timer">05:00</div>
+    <img src="img/LogoJogo.svg" id="LogoJogo">
+  </header>
+
+  <main>
+    <img id="flag" src="" alt="Bandeira" />
+    <div id="BOTOES" class="z-index">
+      <button class="option optionEsquerda" id="Black" onclick="checkAnswer(this)"></button>
+      <button class="option optionDireita" id="Red" onclick="checkAnswer(this)"></button>
+      <button class="option optionEsquerda" id="Red" onclick="checkAnswer(this)"></button>
+      <button class="option optionDireita" id="Black" onclick="checkAnswer(this)"></button>
+    </div>
+    <div class="correct-flags-container" id="BandeirasCertas"></div>
+  </main>
+
+  <footer>
+    <p>© 2025 Quizzy</p>
+  </footer>
+
+  <script src="javaScript/script.js"></script>
+</body>
+</html>
