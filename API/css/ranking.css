@@ -24,7 +24,7 @@ header {
     align-items: center;
 }
 
-header button {
+.BUTTON {
     display: grid;
     grid-column: 2;
     width: 95px;
@@ -39,9 +39,10 @@ header button {
     font-size: 23px;
     cursor: pointer;
     margin-bottom: 100px;
+    text-decoration: none;
 }
 
-header button:hover {
+.BUTTON:hover {
     background-color: #c20000;
 }
 
