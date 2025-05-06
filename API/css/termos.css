@@ -24,6 +24,8 @@ header img {
     margin-right: 400px;
 }
 
+
+
 header button {
     background-color: black;
     border: white solid 1.90px;
@@ -55,7 +57,7 @@ main img {
 
 h1 {
     font-size: 28px;
-    font-family: arial;
+    font-family: inter;
 }
 
 .titulo1 {
@@ -63,7 +65,7 @@ h1 {
 }
 
 p {
-    font-family: arial;
+    font-family: inter;
 }
 
 #image {

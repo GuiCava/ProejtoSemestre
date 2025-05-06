@@ -47,7 +47,7 @@ body {
     text-align: center;
     grid-column: 1;
     grid-row: 2;
-    font-family: arial;
+    font-family: inter;
     background-color: white;
     border-radius: 10px;
     color: #000000;
@@ -68,7 +68,7 @@ body {
 #Menu input::placeholder {
     position: absolute;
     left: 30px;
-    top: 13px;
+    top: 10px;
     font-size: 27px;
 }
 
@@ -114,7 +114,7 @@ body {
     text-decoration: none;
     color: #707070;
     font-weight: bold;
-    font-family: arial;
+    font-family: inter;
     font-size: 11px;
 }
 
