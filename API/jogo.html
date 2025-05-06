@@ -9,7 +9,7 @@
   
   <script>
     var nome = localStorage.GetItem("nomeUsuario")
-    
+    document.getElementsByClassName("player")[0].innerText = nome;
     function atualizarPontosNoServidor() {
       const nome_usuario = localStorage.getItem("nomeUsuario");
       const nome_sala = localStorage.getItem("nomeSala");
