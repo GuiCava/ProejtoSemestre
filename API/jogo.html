@@ -6,8 +6,10 @@
   <title>Jogo de Adivinhação das Bandeiras</title>
   <link rel="stylesheet" href="css/jogo.css">
   <link rel="shortcut icon" href="img/LogoJogo.svg" type="x-icon">
-
+  
   <script>
+    var nome = localStorage.GetItem("nomeUsuario")
+    
     function atualizarPontosNoServidor() {
       const nome_usuario = localStorage.getItem("nomeUsuario");
       const nome_sala = localStorage.getItem("nomeSala");
