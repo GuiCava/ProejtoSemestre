@@ -36,10 +36,12 @@ header {
     margin-right: 100px;
     color: white;
     font-weight: bold;
-    font-size: 23px;
+    font-size: 20px;
     cursor: pointer;
     margin-bottom: 100px;
     text-decoration: none;
+    font-family: inter;
+    border-radius: 5%;
 }
 
 .BUTTON:hover {
