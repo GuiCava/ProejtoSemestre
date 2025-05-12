@@ -22,7 +22,7 @@
 
     async function buscarPontos(nomeSala) {
       try {
-        const response = await fetch(`http://localhost:5000/sala/${nomeSala}/ranking`);
+        const response = await fetch(`http://10.106.208.17:3000/sala/${nomeSala}/ranking`);
         const data = await response.json();
 
         // Cria um array para armazenar o ranking
