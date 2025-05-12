@@ -48,10 +48,6 @@
         if (seconds === 0) {
           if (minutes === 0) {
             clearInterval(timer);
-            setTimeout(function () {
-              // Simula um clique no link após 1 minuto (60000 ms)
-              document.getElementById('redirectLink').click();
-            });
             // Enviar pontos antes de redirecionar
             await atualizarPontosNoServidor();
 
@@ -78,6 +74,10 @@
       const musica = document.getElementById('musicaFundo');
       musica.play();
     }
+
+    setTimeout(function () {
+      window.location.href = "ranking.html"; // ou a URL desejada
+    }, 182000);
   </script>
 </head>
 <body>
