@@ -15,7 +15,7 @@
       const nome_usuario = localStorage.getItem("nomeUsuario");
       const nome_sala = localStorage.getItem("nomeSala");
       const pontos = localStorage.getItem("pontos")
-      return fetch(`10.106.208.17:3000/sala${nome_sala}/usuario/${nome_usuario}/pontos`, {
+      return fetch(`http://10.106.208.23:5000/sala${nome_sala}/usuario/${nome_usuario}/pontos`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -48,6 +48,10 @@
         if (seconds === 0) {
           if (minutes === 0) {
             clearInterval(timer);
+            setTimeout(function () {
+              // Simula um clique no link após 1 minuto (60000 ms)
+              document.getElementById('redirectLink').click();
+            });
             // Enviar pontos antes de redirecionar
             await atualizarPontosNoServidor();
 
@@ -74,10 +78,6 @@
       const musica = document.getElementById('musicaFundo');
       musica.play();
     }
-
-    setTimeout(function () {
-      window.location.href = "ranking.html"; // ou a URL desejada
-    }, 182000);
   </script>
 </head>
 <body>
