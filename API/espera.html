@@ -44,6 +44,7 @@
     <footer>
         <img src="img/ampulheta.svg">
         <p>Aguarde o início do jogo...</p>
+        <a id="redirectLink" href="jogo.html" style="display: none;">Ir para a página</a>
     </footer>
 </body>
 <script>
@@ -63,8 +64,9 @@
     }
 
     setTimeout(function () {
-        window.open("jogo.html", "_self");
-    }, 60000); // 60 segundos
+      // Simula um clique no link após 1 minuto (60000 ms)
+      document.getElementById('redirectLink').click();
+    }, 60000);
 
     function adicionarUsuario(nomeUsuario) {
         fetch(`http://10.106.208.23:5000/sala/${sala}/novo_usuario`, {
