@@ -48,13 +48,12 @@
         if (seconds === 0) {
           if (minutes === 0) {
             clearInterval(timer);
-            alert("Tempo esgotado!");
 
             // Enviar pontos antes de redirecionar
             await atualizarPontosNoServidor();
 
             // Redireciona após garantir envio
-            window.location.href = 'ranking.html';
+            window.open("ranking.html", "_self");
           } else {
             minutes--;
             seconds = 59;
