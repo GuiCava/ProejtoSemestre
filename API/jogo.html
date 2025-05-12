@@ -15,7 +15,7 @@
       const nome_usuario = localStorage.getItem("nomeUsuario");
       const nome_sala = localStorage.getItem("nomeSala");
       const pontos = localStorage.getItem("pontos")
-      return fetch(`http://10.106.208.23:5000/sala${nome_sala}/usuario/${nome_usuario}/pontos`, {
+      return fetch(`10.106.208.17:3000/sala${nome_sala}/usuario/${nome_usuario}/pontos`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
