@@ -48,7 +48,10 @@
         if (seconds === 0) {
           if (minutes === 0) {
             clearInterval(timer);
-
+            setTimeout(function () {
+              // Simula um clique no link após 1 minuto (60000 ms)
+              document.getElementById('redirectLink').click();
+            });
             // Enviar pontos antes de redirecionar
             await atualizarPontosNoServidor();
 
@@ -113,6 +116,7 @@
   </audio>
   <footer>
     <p>© 2025 Quizzy</p>
+    <a id="redirectLink" href="ranking.html" style="display: none;">Ir para a página</a>
   </footer>
 
   <script src="javaScript/script.js"></script>
