@@ -24,6 +24,23 @@
       });
     }
 
+  function exibirNomeUsuario() {
+    const nomeUsuario = localStorage.getItem("nomeUsuario");
+    const nomePlayerElement = document.querySelector(".player");
+    nomePlayerElement.innerText = `@${nomeUsuario}`;  // Exibe o nome do usuário com '@' na tag .player
+  }
+  
+
+  // Chama a função para exibir o nome do usuário assim que a página carregar
+  window.onload = () => {
+    apagar();  // Função que você já tem
+    startTimer();  // Função do timer já existente
+    playMusic();  // Função para música de fundo
+    exibirNomeUsuario();  // Exibe o nome do usuário na tag .player
+  };
+
+
+
     function apagar() {
       setTimeout(() => {
         const loading = document.querySelector(".Loading");
@@ -93,7 +110,7 @@
     <p id="score">0</p>
     <div id="name" class="nome">
       <img src="img/player-icon.svg">
-      <p class="player">@nickname</p>
+      <p class="player">-----</p>
     </div>
     <div id="timer">05:00</div>
     <img src="img/LogoJogo.svg" id="LogoJogo">

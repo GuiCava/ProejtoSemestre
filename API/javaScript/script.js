@@ -9,6 +9,19 @@ document.addEventListener("DOMContentLoaded", () => {
   startGame();
 });
 
+function atualizarPontosNoServidor() {
+  const nome_usuario = localStorage.getItem("nomeUsuario");
+  const nome_sala = localStorage.getItem("nomeSala");
+  const pontos = localStorage.getItem("pontos")
+  return fetch(`http://10.106.208.17:3000/sala/${nome_sala}/usuario/${nome_usuario}/pontos`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ pontos: localStorage.getItem("pontosUsuario") }) // envia os pontos salvos
+  });
+}
+
 function Acertou() {
   var novaDiv = document.createElement("div");
   novaDiv.className = "Acertou";
@@ -133,11 +146,10 @@ function checkAnswer(button) {
   // Atualiza a pontuação
   document.getElementById('score').textContent = `Pontuação: ${score}`;
   localStorage.setItem("pontosUsuario", score);
-
+  atualizarPontosNoServidor()
 
   // Exibe a próxima bandeira
   nextQuestion();
-
 
 }
 
