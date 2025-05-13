@@ -95,7 +95,17 @@
       const musica = document.getElementById('musicaFundo');
       musica.play();
     }
-  </script>
+
+
+    const nome2 = localStorage.getItem("nomeUsuario");
+    console.log(nome2)
+    // Atualiza os elementos com o nome e sala
+    window.addEventListener('DOMContentLoaded', ()=>{
+      document.getElementsByClassName("player1")[0].innerText = nome2
+    });
+    console.log(name2)
+
+    </script>
 </head>
 <body>
 
@@ -109,8 +119,9 @@
   <header>
     <p id="score">0</p>
     <div id="name" class="nome">
+
       <img src="img/player-icon.svg">
-      <p class="player">-----</p>
+      <p class="player player1" id="player">.</p>
     </div>
     <div id="timer">05:00</div>
     <img src="img/LogoJogo.svg" id="LogoJogo">
