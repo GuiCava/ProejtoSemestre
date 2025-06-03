@@ -1,47 +1,52 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inserir ID</title>
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="shortcut icon" href="img/LogoMain.svg" type="x-icon">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inserir ID</title>
+  <link rel="shortcut icon" href="img/LogoMain.svg" type="x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style>
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+
+    #wp-extension {
+      display: none;
+    }
+
+    body {
+      background-image: url("img/FundoIndex.svg");
+      background-size: cover;
+    }
+  </style>
 </head>
-<body>
-    <form>
-        <div id="Menu">
-            <img src="img/LogoMain.svg" id="Logo">
+<body class="grid bg-[url('../img/FundoIndex.svg')] bg-cover h-screen grid-rows-[auto_6rem] justify-items-center items-center">
+    <form class="grid grid-cols-1 grid-rows-[auto_auto_auto] rounded-[5px] h-auto w-auto justify-items-center gap-y-[5px] gap-x-[25px]" id="grid sm:grid-cols-[auto_auto] sm:grid-rows-[auto_auto] sm:gap-x-[25px]">
+        <img src="img/LogoMain.svg" class="grid w-[317px] col-span-2">
 
-            <input type="text" id="inputId" placeholder="Insira o seu ID..." required>
+        <input type="text" placeholder="Insira o seu ID..." class="grid text-center col-start-1 row-start-2 font-[inter] bg-white rounded-[10px] text-black text-[27px] justify-items-center items-center sm:h-[full] h-[54px] w-[260px] font-bold border-0 placeholder:absolute placeholder:left-[35px]" id="inputId" required>
 
-            <a href="nome.html" onclick="return ir(event)" id="button">
-                <img src="img/Seta.svg" alt="Ir para o jogo">
-            </a>
-        </div>
+        <a href="nome.html" onclick="return ir(event)" class="grid sm:col-start-2 sm:row-start-2 rounded-[10px] bg-white  h-[54px] w-[60px] items-center py-[5px] px-[10px] col-start-1 row-start-3 justify-items-center decoration-none">
+            <img src="img/Seta.svg" alt="Ir para o jogo">
+        </a>
     </form>
 
-    <footer>
-        <div id="COLUNAUM">
-            <p class="text">© 2025 Quizzy. Todos os direitos reservados.</p>
+    <footer class="grid row-start-2 grid-cols-3 h-full w-full">
+        <p class="grid justify-start items-center pl-[70px] text-[#707070] font-bold text-[11px] font-[inter]">© 2025 Quizzy. Todos os direitos reservados.</p>
+
+        <div class="grid grid-cols-2 items-center">
+            <a href="https://x.com/quizzyonline" class="w-[27px] justify-self-end mr-[4px]"><img src="img/X.svg" alt="X" class="hover:scale-[1.2]"></a>
+            <a href="https://www.instagram.com/quizzyoriginal/" class="w-[26pxpx] justify-self-start ml-[4px]"><img src="img/insta.svg" alt="Instagram" class="hover:scale-[1.2]"></a>
         </div>
 
-        <div id="Links">
-          <a href="https://x.com/quizzyonline" class="redirecional X"><img src="img/X.svg" alt="X" class="TWITER"></a>
-          <a href="https://www.instagram.com/quizzyoriginal/" class="redirecional"><img src="img/insta.svg" alt="Instagram"></a>
-        </div>
-
-        <div id="COLUNADOIS">
-            <a href="termos.html" id="termo" class="text">Termos de Uso | Aviso sobre Cookies</a>
-        </div>
+        <a href="termos.html" class="grid justify-self-end items-center pr-[70px] text-[#707070] self-center font-bold text-[11px] font-[inter] hover:text-white">Termos de Uso | Aviso sobre Cookies</a>
     </footer>
-    <script src="javaScript/index.js"></script>
 
-    <script>
-        
-    </script>
+    <script src="javaScript/index.js"></script>
 </body>
 </html>
-
