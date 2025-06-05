@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jogo de Adivinhação das Bandeiras</title>
+  <link rel="shortcut icon" href="img/LogoMain.svg" type="x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <script>
+    function atualizarPontosNoServidor() {
+  const nome_usuario = localStorage.getItem("nomeUsuario");
+  const nome_sala = localStorage.getItem("nomeSala");
+  const pontos = localStorage.getItem("pontos")
+  return fetch(`http://localhost:5000/sala/${nome_sala}/usuario/${nome_usuario}/pontos`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ pontos: localStorage.getItem("pontosUsuario") }) // envia os pontos salvos
+  });
+}
+  atualizarPontosNoServidor()
+    function apagar() {
+      setTimeout(() => {
+        const loading = document.querySelector(".Loading");
+        if (loading) {
+          loading.remove();
+        }
+      }, 1000);
+    }
+
+    async function buscarPontos(nomeSala) {
+      try {
+        const response = await fetch(`http://127.0.0.1:5000/sala/${nomeSala}/ranking`);
+        const data = await response.json();
+
+        // Cria um array para armazenar o ranking
+        const ranking = [];
+
+        // Limpa os campos de exibição (caso estejam com algum conteúdo)
+        for (let i = 1; i <= 3; i++) {
+          const nomeEl = document.getElementById(`name${i}`);
+          const pontosEl = document.getElementById(`pontos${i}`);
+
+          if (nomeEl) nomeEl.innerText = '-';
+          if (pontosEl) pontosEl.innerText = '-';
+        }
+
+        // Verifica se a resposta está OK e preenche o ranking
+        if (response.ok && Array.isArray(data)) {
+          for (let i = 0; i < 3; i++) {
+            const user = data[i];
+            const nomeEl = document.getElementById(`name${i + 1}`);
+            const pontosEl = document.getElementById(`pontos${i + 1}`);
+
+            // Armazena os dados no array ranking
+            ranking.push({
+              nome: user?.usuario || '-',
+              pontos: user?.pontos || 0
+            });
+
+            // Atualiza os campos de exibição
+            if (nomeEl) nomeEl.innerText = user?.usuario || '-';
+            if (pontosEl) pontosEl.innerText = user?.pontos?.toString() || '-';
+          }
+
+          // Exibe o ranking no console
+
+          console.log('Ranking:', ranking[2]["pontos"]);
+
+          document.getElementsByClassName("name1")[0].innerText = ranking[0]["nome"];
+          document.getElementsByClassName("name2")[0].innerText = ranking[1]["nome"];
+          document.getElementsByClassName("name3")[0].innerText = ranking[2]["nome"];
+
+          document.getElementsByClassName("pontos1")[0].innerText = ranking[0]["pontos"];
+          document.getElementsByClassName("pontos2")[0].innerText = ranking[1]["pontos"];
+          document.getElementsByClassName("pontos3")[0].innerText = ranking[2]["pontos"];
+        } else {
+          alert(data.erro || 'Erro ao buscar ranking');
+        }
+      } catch (error) {
+        // Também limpa caso ocorra erro de rede ou no servidor
+        for (let i = 1; i <= 3; i++) {
+          const nomeEl = document.getElementById(`name${i}`);
+          const pontosEl = document.getElementById(`pontos${i}`);
+
+          if (nomeEl) nomeEl.innerText = '-';
+          if (pontosEl) pontosEl.innerText = '-';
+        }
+        alert('Erro de conexão com o servidor');
+      }
+    }
+    buscarPontos(localStorage.getItem("nomeSala"))
+
+  </script>
+
+</head>
+
+<body onload="atualizarPontosNoServidor(), buscarPontos(localStorage.getItem('nomeSala')),apagar()" class="grid bg-[url('img/rankingFundo.svg')] bg-cover h-screen grid-rows-[1fr_3fr_0.5fr] grid-cols-[1fr] md:grid-cols-[1.8fr_5fr_1.8fr] md:grid-rows-[0.40fr_auto_0.20fr]">
+
+  <dialog class="Loading" open>
+    <div class="loader">
+      <span class="loader-text">carregando...</span>
+      <span class="load"></span>
+    </div>
+  </dialog>
+
+  <header class="grid grid-cols-[1fr_105px] col-span-3 justify-items-center items-center">
+    <img src="img/LogoMain.svg" class="w-[165px] ml-[110px]">
+    <a href="index.html" class="grid col-start-2 w-[95px] h-[30px] justify-items-center items-center bg-[#FE0000] border-none mr-[30px] text-white font-bold text-[23px] cursor-pointer mb-[100px] md:mr-[100px] decoration-none font-[inter]">Voltar</a>
+  </header>
+
+  <main class="grid col-start-1 md:col-start-2 px-[10px] mb-0 mt-[10px] grid-cols-[1fr_1fr_1fr] md:grid-cols-[1fr_1fr_1fr] gap-x-[3px] md:gap-x-[25px] md:mb-[90px] md:mt-[10px]">
+
+    <div class="grid grid-cols-1 grid-rows-[46px_1fr] gap-y-[18px] justify-items-center mt-[40px]">
+      <div class="grid w-full name name2 items-center justify-items-center bg-[#FE0000] h-full text-white text-[30px] font-bold font-[inter] rounded-[3px] animate-aparecer-mid">-</div>
+      <div class="grid w-full h-full bg-black rounded-[3px] justify-items-center grid-rows-[auto_50px_1fr] grid-cols-[auto] md:grid-rows-[auto_20px_1fr]">
+        <img src="img/segundo.svg" class="grid mt-[30px] row-start-1 col-start-1 mb-[20px] w-[90px]">
+        <p class="grid pontos pontos2 row-start-2 h-[20px] text-[20px] text-white justify-self-center items-center font-bold font-[inter] animate-aparecer">-----</p>
+        <p class="grid acertos acertos2 text-[20px] w-full row-start-3 text-white mt-[10px] justify-items-center items-start font-[inter] animate-aparecer">----</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 grid-rows-[46px_1fr] gap-y-[18px] justify-items-center">
+      <div class="grid w-full name1 name items-center justify-items-center bg-[#FE0000] h-full text-white text-[30px] font-bold font-[inter] rounded-[3px] animate-aparecer-slow">----</div>
+      <div class="grid w-full h-full bg-black rounded-[3px] justify-items-center grid-rows-[auto_50px_1fr] grid-cols-[auto] md:grid-rows-[auto_20px_1fr]">
+        <img src="img/primeiro.svg" class="grid mt-[30px] row-start-1 col-start-1 mb-[20px] w-[90px]">
+        <p class="grid pontos pontos1 h-[20px] text-[20px] text-white justify-self-center items-center font-bold font-[inter] animate-aparecer">-----</p>
+        <p class="grid acertos acertos1 text-[20px] w-full row-start-3 text-white mt-[10px] justify-items-center items-start font-[inter] animate-aparecer">----</p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 grid-rows-[46px_1fr] gap-y-[18px] justify-items-center mt-[40px]">
+      <div class="grid w-full name3 name items-center justify-items-center bg-[#FE0000] h-full text-white text-[30px] font-bold font-[inter] rounded-[3px] animate-aparecer-fast">-----</div>
+      <div class="grid w-full h-full bg-black rounded-[3px] justify-items-center grid-rows-[auto_50px_1fr] grid-cols-[auto] md:grid-rows-[auto_20px_1fr]">
+        <img src="img/terceiro.svg" class="grid mt-[30px] row-start-1 col-start-1 mb-[20px] w-[90px]">
+        <p class="grid pontos pontos3 row-start-2 h-[20px] text-[20px] text-white justify-self-center items-center font-bold font-[inter] animate-aparecer">-----</p>
+        <p class="grid acertos acertos3 text-[20px] w-full row-start-3 text-white mt-[10px] justify-items-center items-start font-[inter] animate-aparecer">----</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="grid row-start-3 grid-cols-3 h-full w-full col-span-3">
+    <p class="grid justify-start items-center pl-[70px] text-[#707070] font-bold text-[11px] font-[inter]">© 2025 Quizzy. Todos os direitos reservados.</p>
+    <div class="grid grid-cols-2 items-center">
+      <a href="https://x.com/quizzyonline" class="w-[27px] justify-self-end mr-[4px]">
+        <img src="img/X.svg" alt="X" class="hover:scale-[1.2]">
+      </a>
+      <a href="https://www.instagram.com/quizzyoriginal/" class="w-[26px] justify-self-start ml-[4px]">
+        <img src="img/insta.svg" alt="Instagram" class="hover:scale-[1.2]">
+      </a>
+    </div>
+    <a href="termos.html" class="grid justify-self-end items-center pr-[70px] text-[#707070] self-center font-bold text-[11px] font-[inter] hover:text-white">Termos de Uso | Aviso sobre Cookies</a>
+  </footer>
+</body>
+
+</html>
