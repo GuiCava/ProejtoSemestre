@@ -14,35 +14,26 @@ function atualizarPontosNoServidor() {
   const nome_usuario = localStorage.getItem("nomeUsuario");
   const nome_sala = localStorage.getItem("nomeSala");
   const pontos = localStorage.getItem("pontos")
-  return fetch(`http://localhost:5000/sala/${nome_sala}/usuario/${nome_usuario}/pontos`, {
+  return fetch(`http://192.168.244.106:5000/sala/${nome_sala}/usuario/${nome_usuario}/pontos`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ pontos: localStorage.getItem("pontosUsuario") }) // envia os pontos salvos
+    body: JSON.stringify({ pontos: localStorage.getItem("pontosUsuario") })
   });
 }
 
 function Acertou() {
-  console.log(score)
-  document.getElementById('score').textContent = `Pontuação: ${score}`;
-  localStorage.setItem("pontosUsuario", score);
-  
   var novaDiv = document.createElement("div");
   novaDiv.className = "Acertou";
-  console.log(score)
-  
-  
+  document.body.appendChild(novaDiv);
 }
 
 function Errou() {
-  console.log(score)
-  document.getElementById('score').textContent = `Pontuação: ${score}`;
-  localStorage.setItem("pontosUsuario", score);
-  
-  console.log(score)
-  
-  }
+  var novaDiv = document.createElement("div");
+  novaDiv.className = "Errou";
+  document.body.appendChild(novaDiv);
+}
 
 // Função para iniciar o jogo
 function startGame() {
@@ -57,7 +48,7 @@ function startGame() {
 // Função para buscar dados dos países
 async function fetchCountries() {
   try {
-    const response = await fetch("https://restcountries.com/v3.1/all");
+    const response = await fetch("https://restcountries.com/v3.1/all?fields=name,flags,translations");
     countries = await response.json();
     nextQuestion();
   } catch (error) {

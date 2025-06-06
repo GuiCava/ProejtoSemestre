@@ -12,19 +12,6 @@
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
   <script>
-    function atualizarPontosNoServidor() {
-  const nome_usuario = localStorage.getItem("nomeUsuario");
-  const nome_sala = localStorage.getItem("nomeSala");
-  const pontos = localStorage.getItem("pontos")
-  return fetch(`http://localhost:5000/sala/${nome_sala}/usuario/${nome_usuario}/pontos`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ pontos: localStorage.getItem("pontosUsuario") }) // envia os pontos salvos
-  });
-}
-  atualizarPontosNoServidor()
     function apagar() {
       setTimeout(() => {
         const loading = document.querySelector(".Loading");
@@ -36,7 +23,7 @@
 
     async function buscarPontos(nomeSala) {
       try {
-        const response = await fetch(`http://127.0.0.1:5000/sala/${nomeSala}/ranking`);
+        const response = await fetch(`http://10.106.208.17:3000/sala/${nomeSala}/ranking`);
         const data = await response.json();
 
         // Cria um array para armazenar o ranking
@@ -98,10 +85,170 @@
     buscarPontos(localStorage.getItem("nomeSala"))
 
   </script>
+  <style>
+    #wp-extension {
+      display: none;
+    }
 
+    .Loading {
+      display: grid;
+      grid-row: span 3;
+      width: 100%;
+      height: 100%;
+      z-index: 5;
+      background-color: white;
+      border: none;
+      align-items: center;
+      justify-items: center;
+    }
+
+    .loader {
+      width: 80px;
+      height: 50px;
+      position: relative;
+    } 
+  
+    .loader-text {
+      position: absolute;
+      top: 0;
+      padding: 0;
+      margin: 0;
+      color: black;
+      animation: text_713 3.5s ease both infinite;
+      font-size: 18px;
+      letter-spacing: 1px;
+      font-family: arial;
+    }
+  
+    .load {
+      background-color: #c50024;
+      border-radius: 50px;
+      display: block;
+      height: 20px;
+      width: 200px;
+      bottom: 0;
+      position: absolute;
+      transform: translateX(64px);
+      animation: loading_713 2s ease both infinite;
+    }
+    
+    .load::before {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 100%;
+      background-color: #aa001f;
+      border-radius: inherit;
+      animation: loading2_713 2s ease both infinite;
+    }
+  
+    @keyframes text_713 {
+      0% {
+        letter-spacing: 1px;
+        transform: translateX(0px);
+      }
+    
+      40% {
+        letter-spacing: 2px;
+        transform: translateX(26px);
+      }
+    
+      80% {
+        letter-spacing: 1px;
+        transform: translateX(32px);
+      }
+    
+      90% {
+        letter-spacing: 2px;
+        transform: translateX(0px);
+      }
+    
+      100% {
+        letter-spacing: 1px;
+        transform: translateX(0px);
+      }
+    }
+    
+    @keyframes loading_713 {
+      0% {
+        width: 16px;
+        transform: translateX(0px);
+      }
+    
+      40% {
+        width: 100%;
+        transform: translateX(0px);
+      }
+    
+      80% {
+        width: 16px;
+        transform: translateX(64px);
+      }
+    
+      90% {
+        width: 100%;
+        transform: translateX(0px);
+      }
+    
+      100% {
+        width: 16px;
+        transform: translateX(0px);
+      }
+    }
+    
+    @keyframes loading2_713 {
+      0% {
+        transform: translateX(0px);
+        width: 16px;
+      }
+    
+      40% {
+        transform: translateX(0%);
+        width: 80%;
+      }
+    
+      80% {
+        width: 100%;
+        transform: translateX(0px);
+      }
+    
+      90% {
+        width: 80%;
+        transform: translateX(15px);
+      }
+    
+      100% {
+        transform: translateX(0px);
+        width: 16px;
+      }
+    }
+
+    @layer utilities {
+      @keyframes aparecer {
+        0%, 33%, 66% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      .animate-aparecer {
+        animation: aparecer 7.5s forwards;
+      }
+      .animate-aparecer-fast {
+        animation: aparecer 2.5s forwards;
+      }
+      .animate-aparecer-mid {
+        animation: aparecer 4.5s forwards;
+      }
+      .animate-aparecer-slow {
+        animation: aparecer 6.5s forwards;
+      }
+    }
+  </style>
 </head>
 
-<body onload="atualizarPontosNoServidor(), buscarPontos(localStorage.getItem('nomeSala')),apagar()" class="grid bg-[url('img/rankingFundo.svg')] bg-cover h-screen grid-rows-[1fr_3fr_0.5fr] grid-cols-[1fr] md:grid-cols-[1.8fr_5fr_1.8fr] md:grid-rows-[0.40fr_auto_0.20fr]">
+<body onload="apagar()" class="grid bg-[url('img/rankingFundo.svg')] bg-cover h-screen grid-rows-[1fr_3fr_0.5fr] grid-cols-[1fr] md:grid-cols-[1.8fr_5fr_1.8fr] md:grid-rows-[0.40fr_auto_0.20fr]">
 
   <dialog class="Loading" open>
     <div class="loader">
@@ -112,35 +259,34 @@
 
   <header class="grid grid-cols-[1fr_105px] col-span-3 justify-items-center items-center">
     <img src="img/LogoMain.svg" class="w-[165px] ml-[110px]">
-    <a href="index.html" class="grid col-start-2 w-[95px] h-[30px] justify-items-center items-center bg-[#FE0000] border-none mr-[30px] text-white font-bold text-[23px] cursor-pointer mb-[100px] md:mr-[100px] decoration-none font-[inter]">Voltar</a>
+    <a href="index.html" class="grid col-start-2 w-[95px] h-[30px] justify-items-center items-center bg-[#FE0000] border-none mr-[30px] text-white font-bold text-[23px] cursor-pointer mb-[100px] md:mr-[100px] decoration-none font-[inter] hover:bg-[#C90000]">Voltar</a>
   </header>
 
   <main class="grid col-start-1 md:col-start-2 px-[10px] mb-0 mt-[10px] grid-cols-[1fr_1fr_1fr] md:grid-cols-[1fr_1fr_1fr] gap-x-[3px] md:gap-x-[25px] md:mb-[90px] md:mt-[10px]">
-
     <div class="grid grid-cols-1 grid-rows-[46px_1fr] gap-y-[18px] justify-items-center mt-[40px]">
-      <div class="grid w-full name name2 items-center justify-items-center bg-[#FE0000] h-full text-white text-[30px] font-bold font-[inter] rounded-[3px] animate-aparecer-mid">-</div>
+      <div class="grid w-full items-center justify-items-center bg-[#FE0000] h-full text-white text-[30px] font-bold font-[inter] rounded-[3px] animate-aparecer-mid">-</div>
       <div class="grid w-full h-full bg-black rounded-[3px] justify-items-center grid-rows-[auto_50px_1fr] grid-cols-[auto] md:grid-rows-[auto_20px_1fr]">
         <img src="img/segundo.svg" class="grid mt-[30px] row-start-1 col-start-1 mb-[20px] w-[90px]">
-        <p class="grid pontos pontos2 row-start-2 h-[20px] text-[20px] text-white justify-self-center items-center font-bold font-[inter] animate-aparecer">-----</p>
-        <p class="grid acertos acertos2 text-[20px] w-full row-start-3 text-white mt-[10px] justify-items-center items-start font-[inter] animate-aparecer">----</p>
+        <p class="grid row-start-2 h-[20px] text-[20px] text-white justify-self-center items-center font-bold font-[inter] animate-aparecer">-----</p>
+        <p class="grid text-[20px] w-full row-start-3 text-white mt-[10px] justify-items-center items-start font-[inter] animate-aparecer">----</p>
       </div>
     </div>
 
     <div class="grid grid-cols-1 grid-rows-[46px_1fr] gap-y-[18px] justify-items-center">
-      <div class="grid w-full name1 name items-center justify-items-center bg-[#FE0000] h-full text-white text-[30px] font-bold font-[inter] rounded-[3px] animate-aparecer-slow">----</div>
+      <div class="grid w-full items-center justify-items-center bg-[#FE0000] h-full text-white text-[30px] font-bold font-[inter] rounded-[3px] animate-aparecer-slow">----</div>
       <div class="grid w-full h-full bg-black rounded-[3px] justify-items-center grid-rows-[auto_50px_1fr] grid-cols-[auto] md:grid-rows-[auto_20px_1fr]">
         <img src="img/primeiro.svg" class="grid mt-[30px] row-start-1 col-start-1 mb-[20px] w-[90px]">
-        <p class="grid pontos pontos1 h-[20px] text-[20px] text-white justify-self-center items-center font-bold font-[inter] animate-aparecer">-----</p>
-        <p class="grid acertos acertos1 text-[20px] w-full row-start-3 text-white mt-[10px] justify-items-center items-start font-[inter] animate-aparecer">----</p>
+        <p class="grid row-start-2 h-[20px] text-[20px] text-white justify-self-center items-center font-bold font-[inter] animate-aparecer">-----</p>
+        <p class="grid text-[20px] w-full row-start-3 text-white mt-[10px] justify-items-center items-start font-[inter] animate-aparecer">----</p>
       </div>
     </div>
 
     <div class="grid grid-cols-1 grid-rows-[46px_1fr] gap-y-[18px] justify-items-center mt-[40px]">
-      <div class="grid w-full name3 name items-center justify-items-center bg-[#FE0000] h-full text-white text-[30px] font-bold font-[inter] rounded-[3px] animate-aparecer-fast">-----</div>
+      <div class="grid w-full items-center justify-items-center bg-[#FE0000] h-full text-white text-[30px] font-bold font-[inter] rounded-[3px] animate-aparecer-fast">-----</div>
       <div class="grid w-full h-full bg-black rounded-[3px] justify-items-center grid-rows-[auto_50px_1fr] grid-cols-[auto] md:grid-rows-[auto_20px_1fr]">
         <img src="img/terceiro.svg" class="grid mt-[30px] row-start-1 col-start-1 mb-[20px] w-[90px]">
-        <p class="grid pontos pontos3 row-start-2 h-[20px] text-[20px] text-white justify-self-center items-center font-bold font-[inter] animate-aparecer">-----</p>
-        <p class="grid acertos acertos3 text-[20px] w-full row-start-3 text-white mt-[10px] justify-items-center items-start font-[inter] animate-aparecer">----</p>
+        <p class="grid row-start-2 h-[20px] text-[20px] text-white justify-self-center items-center font-bold font-[inter] animate-aparecer">-----</p>
+        <p class="grid text-[20px] w-full row-start-3 text-white mt-[10px] justify-items-center items-start font-[inter] animate-aparecer">----</p>
       </div>
     </div>
   </main>
